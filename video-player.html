@@ -10,16 +10,15 @@
     videoPlayer.load();
     videoPlayer.play();
 
-    videoPlayer.addEventListener("ended", function () {
-        setTimeout(function () {
-            currentIndex++;
-            if (currentIndex == numVideos) {
-                currentIndex = 1;
-            }
-            videoPlayer.src = "videos/" + currentIndex + ".mp4";
-            videoPlayer.load();
-            videoPlayer.play();
-        }, 500);
-    });
+    setTimeout(function () {
+        currentIndex++;
+        if (currentIndex >= numVideos) {
+            currentIndex = 1;
+        }
+        videoPlayer.src = "videos/" + currentIndex + ".mp4";
+        videoPlayer.load();
+        videoPlayer.play();
+    }, 2000);
+
 
 </script>
