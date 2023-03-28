@@ -1,22 +1,30 @@
 <video id="video-player" autoplay loop>
-    <source src="videos/1.mp4" type="video/mp4">
+    <source src="videos/2.mp4" type="video/mp4">
 </video>
 
 <script>
     var videoPlayer = document.getElementById("video-player");
-    var videos = [];
+    var numVideos = 4;
     var currentIndex = 1;
     videoPlayer.src = "videos/" + currentIndex + ".mp4";
+    videoPlayer.load();
+    videoPlayer.play();
 
     videoPlayer.addEventListener("ended", function () {
         setTimeout(function () {
             currentIndex++;
-            if (currentIndex == videos.length) {
+            if (currentIndex == numVideos) {
                 currentIndex = 1;
             }
             videoPlayer.src = "videos/" + currentIndex + ".mp4";
             videoPlayer.load();
             videoPlayer.play();
-        }, 5000);
+        }, 500);
     });
+
+    function playVideo() {
+        videoPlayer.play();
+    }
+    document.addEventListener('click', playVideo);
+
 </script>
