@@ -1,0 +1,41 @@
+<video id="video-player" autoplay loop>
+    <source src="video1.mp4" type="video/mp4">
+</video>
+
+<script>
+    var videoPlayer = document.getElementById("video-player");
+    var videos = [];
+    var currentIndex = 0;
+
+    // Load the list of video files from the "videos" folder
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/videos/", true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var filenames = xhr.responseText.split("\n");
+            for (var i = 0; i < filenames.length; i++) {
+                var filename = filenames[i].trim();
+                if (filename !== "") {
+                    videos.push(filename);
+                }
+            }
+            // Start playing the first video
+            videoPlayer.src = "/videos/" + videos[currentIndex];
+            videoPlayer.load();
+            videoPlayer.play();
+        }
+    };
+    xhr.send();
+
+    videoPlayer.addEventListener("ended", function () {
+        setTimeout(function () {
+            currentIndex++;
+            if (currentIndex == videos.length) {
+                currentIndex = 0;
+            }
+            videoPlayer.src = "/videos/" + videos[currentIndex];
+            videoPlayer.load();
+            videoPlayer.play();
+        }, 5000);
+    });
+</script>
