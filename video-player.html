@@ -10,7 +10,7 @@
     videoPlayer.load();
     videoPlayer.play();
 
-    setTimeout(function () {
+    setInterval(function () {
         currentIndex++;
         if (currentIndex >= numVideos) {
             currentIndex = 1;
@@ -19,6 +19,5 @@
         videoPlayer.load();
         videoPlayer.play();
     }, 2000);
-
 
 </script>
