@@ -2,7 +2,7 @@
 
     <center>
         <video id="video-player" muted autoplay loop>
-            <source src="videos/2.mp4" type="video/mp4">
+            <source type="video/mp4">
         </video>
     </center>
 
@@ -10,13 +10,15 @@
         var videoPlayer = document.getElementById("video-player");
         var numVideos = 784;
 
-        setInterval(function () {
+        function play() {
             const randIndex = Math.floor(Math.random() * numVideos) + 1;
             videoPlayer.src = "videos/" + randIndex + ".mp4";
             console.log(videoPlayer.src)
             videoPlayer.load();
             videoPlayer.play();
-        }, 20000);
+        }
+        play();
+        setInterval(play, 20000);
 
     </script>
 </body>
