@@ -1,10 +1,16 @@
 <body style="background-color:black;">
+    <style>
+        video {
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
 
-    <center>
-        <video id="video-player" muted autoplay playsinline loop>
-            <source type="video/mp4">
-        </video>
-    </center>
+    <video id="video-player" muted autoplay playsinline loop>
+        <source type="video/mp4">
+    </video>
 
     <script>
         var videoPlayer = document.getElementById("video-player");
