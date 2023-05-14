@@ -1,23 +1,22 @@
-<video id="video-player" muted autoplay loop>
-    <source src="videos/2.mp4" type="video/mp4">
-</video>
+<body style="background-color:black;">
 
-<script>
-    var videoPlayer = document.getElementById("video-player");
-    var numVideos = 4;
-    var currentIndex = 1;
-    videoPlayer.src = "videos/" + currentIndex + ".mp4";
-    videoPlayer.load();
-    videoPlayer.play();
+    <center>
+        <video id="video-player" muted autoplay loop>
+            <source src="videos/2.mp4" type="video/mp4">
+        </video>
+    </center>
 
-    setInterval(function () {
-        currentIndex++;
-        if (currentIndex >= numVideos) {
-            currentIndex = 1;
-        }
-        videoPlayer.src = "videos/" + currentIndex + ".mp4";
-        videoPlayer.load();
-        videoPlayer.play();
-    }, 2000);
+    <script>
+        var videoPlayer = document.getElementById("video-player");
+        var numVideos = 784;
 
-</script>
+        setInterval(function () {
+            const randIndex = Math.floor(Math.random() * numVideos) + 1;
+            videoPlayer.src = "videos/" + randIndex + ".mp4";
+            console.log(videoPlayer.src)
+            videoPlayer.load();
+            videoPlayer.play();
+        }, 20000);
+
+    </script>
+</body>
