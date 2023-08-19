@@ -1,7 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 let code = urlParams.get('code');
 let codeVerifier = localStorage.getItem('code_verifier');
-const redirectUri = 'http://127.0.0.1:8080/spotify.html';
+const redirectUri = `${window.location.origin}/spotify.html`;
 const clientId = '201bae405c6d47c49e045f8734fc82da';
 
 let body = new URLSearchParams({
