@@ -42,16 +42,42 @@ async function getCurrentlyPlaying(accessToken) {
         }
     });
 
-    return response.json();
+    if (response.status === 204) {
+        playVideo();
+        return;
+    }
+    const json = await response.json();
+    if (!json.is_playing) {
+        playVideo();
+        return;
+    }
+
+    return json;
 }
 
 function getImageFromCurrentlyPlaying(playingJson) {
     return playingJson.item.album.images[0].url;
 }
 
+function playVideo() {
+    var videoPlayer = document.getElementById("video-player");
+    var numVideos = 784;
+
+    function play() {
+        const randIndex = Math.floor(Math.random() * numVideos) + 1;
+        videoPlayer.src = "videos/" + randIndex + ".mp4";
+        console.log(videoPlayer.src)
+        videoPlayer.load();
+        videoPlayer.play();
+    }
+    play();
+    setInterval(play, 20000);
+}
+
 const token = localStorage.getItem('access_token');
 const nowPlaying = await getCurrentlyPlaying(token);
-const imgUrl = getImageFromCurrentlyPlaying(nowPlaying);
-
-const pageImg = document.getElementById('album');
-pageImg.src = imgUrl;
+if (nowPlaying) {
+    const imgUrl = getImageFromCurrentlyPlaying(nowPlaying);
+    const pageImg = document.getElementById('album');
+    pageImg.src = imgUrl;
+}
