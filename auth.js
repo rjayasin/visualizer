@@ -29,7 +29,7 @@ async function generateCodeChallenge(codeVerifier) {
 }
 
 const clientId = '201bae405c6d47c49e045f8734fc82da';
-const redirectUri = `${window.location.origin}/spotify.html`;
+const redirectUri = `${window.location.origin}/visualizer/spotify.html`;
 
 
 generateCodeChallenge(codeVerifier).then(codeChallenge => {
