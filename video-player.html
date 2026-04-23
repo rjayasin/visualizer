@@ -6,6 +6,20 @@
             top: 50%;
             transform: translate(-50%, -50%);
         }
+
+        @media (orientation: landscape) {
+            video {
+                height: 100vh;
+                width: auto;
+            }
+        }
+
+        @media (orientation: portrait) {
+            video {
+                width: 100vw;
+                height: auto;
+            }
+        }
     </style>
 
     <video id="video-player" muted autoplay playsinline loop>
