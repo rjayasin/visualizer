@@ -8,6 +8,7 @@
             height: 100vh;
             width: 100vw;
             object-fit: contain;
+            cursor: pointer;
         }
     </style>
 
@@ -28,6 +29,8 @@
         }
         play();
         setInterval(play, 20000);
+
+        document.body.addEventListener("click", play);
 
     </script>
 </body>
